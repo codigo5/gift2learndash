@@ -397,8 +397,8 @@ class Parser {
     return array_reduce($this->dir->getFiles(), function($curry, $filePath) {
       $formatter = $this->getFormatter($filePath);
       if (!$questions = $formatter->importprocess()) {
-        // TODO: Handle import errors
-        var_dump($formatter->importerrorsdata);die;
+        $this->importer->getCli()->showError('Could not convert file "' . $filePath . '"', false, null);
+        return $curry;
       }
       $curry[$filePath] = $questions;
       return $curry;
@@ -426,6 +426,10 @@ class Import {
 
   public function process() {
     $this->output->saveToFile($this->parser->parse());
+  }
+
+  public function getCli() {
+    return $this->cli;
   }
 }
 
@@ -467,10 +471,14 @@ import -d /Desktop/QuizesTXTFolder
 USAGE;
   }
 
-  public function showError($error) {
+  public function showError($error, $show_usage = true, $exit = 1) {
     echo "ERROR: " . $error . PHP_EOL . PHP_EOL;
-    $this->showUsage();
-    exit(1);
+    if ($show_usage) {
+      $this->showUsage();
+    }
+    if (!is_null($exit)) {
+      exit($exit);
+    }
   }
 
   public function process() {

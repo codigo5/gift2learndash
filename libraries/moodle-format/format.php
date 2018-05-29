@@ -460,7 +460,7 @@ class qformat_default {
 
         // check for errors before we continue
         if ($this->stoponerror and ($this->importerrors>0)) {
-            return true;
+            return false;
         }
 
         return $questions;
