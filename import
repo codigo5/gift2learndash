@@ -34,7 +34,7 @@ abstract class Output {
   }
 
   public function getFilename($filePath) {
-    return pathinfo($filePath, PATHINFO_FILENAME);
+    return trim(pathinfo($filePath, PATHINFO_FILENAME));
   }
 
   public function buildFilename($filePath) {
@@ -55,6 +55,11 @@ abstract class Output {
 class LearnDashOutput extends Output {
   public function getExtension() {
     return 'xml';
+  }
+
+  public function getQuizText($filePath) {
+    $quizText = preg_replace("/^(?:[\s]*)[0-9]+(?:[\s]*)\-(?:[\s]*)/", '', $this->getFilename($filePath));
+    return preg_replace("/([\D])$/", '?', $quizText);
   }
 
   public function build($filePath, $questionsData) {
@@ -81,7 +86,7 @@ class LearnDashOutput extends Output {
 
     // text
     $text = $tree->createElement('text');
-    $text->appendChild($tree->createCDATASection(''));
+    $text->appendChild($tree->createCDATASection($this->getQuizText($filePath)));
     $quiz->appendChild($text);
 
     // resultText
