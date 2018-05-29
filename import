@@ -112,7 +112,7 @@ class LearnDashOutput extends Output {
     $quiz->appendChild($answerRandom);
 
     // timeLimit
-    $timeLimit = $tree->createElement('timeLimit', '600');
+    $timeLimit = $tree->createElement('timeLimit', '0');
     $quiz->appendChild($timeLimit);
 
     // showPoints
@@ -152,10 +152,10 @@ class LearnDashOutput extends Output {
 
     // toplist
     $toplist = $tree->createElement('toplist');
-    $toplist->setAttribute('activated', 'false');
+    $toplist->setAttribute('activated', 'true');
 
     //// toplistDataAddPermissions
-    $toplistDataAddPermissions = $tree->createElement('toplistDataAddPermissions', '1');
+    $toplistDataAddPermissions = $tree->createElement('toplistDataAddPermissions', '2');
     $toplist->appendChild($toplistDataAddPermissions);
 
     //// toplistDataSort
@@ -171,7 +171,7 @@ class LearnDashOutput extends Output {
     $toplist->appendChild($toplistDataAddBlock);
 
     //// toplistDataShowLimit
-    $toplistDataShowLimit = $tree->createElement('toplistDataShowLimit', '1');
+    $toplistDataShowLimit = $tree->createElement('toplistDataShowLimit', '10');
     $toplist->appendChild($toplistDataShowLimit);
 
     //// toplistDataShowIn
@@ -262,7 +262,7 @@ class LearnDashOutput extends Output {
     $quiz->appendChild($quizModus);
 
     // startOnlyRegisteredUser
-    $startOnlyRegisteredUser = $tree->createElement('startOnlyRegisteredUser', 'false');
+    $startOnlyRegisteredUser = $tree->createElement('startOnlyRegisteredUser', 'true');
     $quiz->appendChild($startOnlyRegisteredUser);
 
     // forms
