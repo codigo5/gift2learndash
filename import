@@ -73,215 +73,292 @@ class LearnDashOutput extends Output {
 
     $quiz = $tree->createElement('quiz');
 
+    // title
+    $title = $tree->createElement('title');
+    $title->setAttribute('titleHidden', 'false');
+    $title->appendChild($tree->createCDATASection($this->getFilename($filePath)));
+    $quiz->appendChild($title);
+
+    // text
+    $text = $tree->createElement('text');
+    $text->appendChild($tree->createCDATASection(''));
+    $quiz->appendChild($text);
+
+    // resultText
+    $resultText = $tree->createElement('resultText');
+    $resultText->setAttribute('gradeEnabled', 'false');
+    $resultText->appendChild($tree->createCDATASection(''));
+    $quiz->appendChild($resultText);
+
+    // btnRestartQuizHidden
+    $btnRestartQuizHidden = $tree->createElement('btnRestartQuizHidden', 'true');
+    $quiz->appendChild($btnRestartQuizHidden);
+
+    // btnViewQuestionHidden
+    $btnViewQuestionHidden = $tree->createElement('btnViewQuestionHidden', 'true');
+    $quiz->appendChild($btnViewQuestionHidden);
+
+    // questionRandom
+    $questionRandom = $tree->createElement('questionRandom', 'false');
+    $quiz->appendChild($questionRandom);
+
+    // answerRandom
+    $answerRandom = $tree->createElement('answerRandom', 'true');
+    $quiz->appendChild($answerRandom);
+
+    // timeLimit
+    $timeLimit = $tree->createElement('timeLimit', '600');
+    $quiz->appendChild($timeLimit);
+
+    // showPoints
+    $showPoints = $tree->createElement('showPoints', 'false');
+    $quiz->appendChild($showPoints);
+
+    // statistic
+    $statistic = $tree->createElement('statistic');
+    $statistic->setAttribute('activated', 'true');
+    $statistic->setAttribute('ipLock', '0');
+    $quiz->appendChild($statistic);
+
+    // quizRunOnce
+    $quizRunOnce = $tree->createElement('quizRunOnce', 'true');
+    $quizRunOnce->setAttribute('type', '2');
+    $quizRunOnce->setAttribute('cookie', 'false');
+    $quizRunOnce->setAttribute('time', '0');
+    $quiz->appendChild($quizRunOnce);
+
+    // numberedAnswer
+    $numberedAnswer = $tree->createElement('numberedAnswer', 'false');
+    $quiz->appendChild($numberedAnswer);
+
+    // hideAnswerMessageBox
+    $hideAnswerMessageBox = $tree->createElement('hideAnswerMessageBox', 'true');
+    $quiz->appendChild($hideAnswerMessageBox);
+
+    // disabledAnswerMark
+    $disabledAnswerMark = $tree->createElement('disabledAnswerMark', 'true');
+    $quiz->appendChild($disabledAnswerMark);
+
+    // showMaxQuestion
+    $showMaxQuestion = $tree->createElement('showMaxQuestion', 'false');
+    $showMaxQuestion->setAttribute('showMaxQuestionValue', '1');
+    $showMaxQuestion->setAttribute('showMaxQuestionPercent', 'false');
+    $quiz->appendChild($showMaxQuestion);
+
+    // toplist
+    $toplist = $tree->createElement('toplist');
+    $toplist->setAttribute('activated', 'false');
+
+    //// toplistDataAddPermissions
+    $toplistDataAddPermissions = $tree->createElement('toplistDataAddPermissions', '1');
+    $toplist->appendChild($toplistDataAddPermissions);
+
+    //// toplistDataSort
+    $toplistDataSort = $tree->createElement('toplistDataSort', '1');
+    $toplist->appendChild($toplistDataSort);
+
+    //// toplistDataAddMultiple
+    $toplistDataAddMultiple = $tree->createElement('toplistDataAddMultiple', 'false');
+    $toplist->appendChild($toplistDataAddMultiple);
+
+    //// toplistDataAddBlock
+    $toplistDataAddBlock = $tree->createElement('toplistDataAddBlock', '1');
+    $toplist->appendChild($toplistDataAddBlock);
+
+    //// toplistDataShowLimit
+    $toplistDataShowLimit = $tree->createElement('toplistDataShowLimit', '1');
+    $toplist->appendChild($toplistDataShowLimit);
+
+    //// toplistDataShowIn
+    $toplistDataShowIn = $tree->createElement('toplistDataShowIn', '1');
+    $toplist->appendChild($toplistDataShowIn);
+
+    //// toplistDataCaptcha
+    $toplistDataCaptcha = $tree->createElement('toplistDataCaptcha', 'false');
+    $toplist->appendChild($toplistDataCaptcha);
+
+    //// toplistDataAddAutomatic
+    $toplistDataAddAutomatic = $tree->createElement('toplistDataAddAutomatic', 'true');
+    $toplist->appendChild($toplistDataAddAutomatic);
+
+    $quiz->appendChild($toplist);
+
+    // showAverageResult
+    $showAverageResult = $tree->createElement('showAverageResult', 'true');
+    $quiz->appendChild($showAverageResult);
+
+    // prerequisite
+    $prerequisite = $tree->createElement('prerequisite', 'false');
+    $quiz->appendChild($prerequisite);
+
+    // showReviewQuestion
+    $showReviewQuestion = $tree->createElement('showReviewQuestion', 'false');
+    $quiz->appendChild($showReviewQuestion);
+
+    // quizSummaryHide
+    $quizSummaryHide = $tree->createElement('quizSummaryHide', 'false');
+    $quiz->appendChild($quizSummaryHide);
+
+    // skipQuestionDisabled
+    $skipQuestionDisabled = $tree->createElement('skipQuestionDisabled', 'true');
+    $quiz->appendChild($skipQuestionDisabled);
+
+    // emailNotification
+    $emailNotification = $tree->createElement('emailNotification', '0');
+    $quiz->appendChild($emailNotification);
+
+    // userEmailNotification
+    $userEmailNotification = $tree->createElement('userEmailNotification', 'false');
+    $quiz->appendChild($userEmailNotification);
+
+    // showCategoryScore
+    $showCategoryScore = $tree->createElement('showCategoryScore', 'false');
+    $quiz->appendChild($showCategoryScore);
+
+    // hideResultCorrectQuestion
+    $hideResultCorrectQuestion = $tree->createElement('hideResultCorrectQuestion', 'true');
+    $quiz->appendChild($hideResultCorrectQuestion);
+
+    // hideResultQuizTime
+    $hideResultQuizTime = $tree->createElement('hideResultQuizTime', 'false');
+    $quiz->appendChild($hideResultQuizTime);
+
+    // hideResultPoints
+    $hideResultPoints = $tree->createElement('hideResultPoints', 'true');
+    $quiz->appendChild($hideResultPoints);
+
+    // autostart
+    $autostart = $tree->createElement('autostart', 'true');
+    $quiz->appendChild($autostart);
+
+    // forcingQuestionSolve
+    $forcingQuestionSolve = $tree->createElement('forcingQuestionSolve', 'true');
+    $quiz->appendChild($forcingQuestionSolve);
+
+    // hideQuestionPositionOverview
+    $hideQuestionPositionOverview = $tree->createElement('hideQuestionPositionOverview', 'true');
+    $quiz->appendChild($hideQuestionPositionOverview);
+
+    // hideQuestionNumbering
+    $hideQuestionNumbering = $tree->createElement('hideQuestionNumbering', 'true');
+    $quiz->appendChild($hideQuestionNumbering);
+
+    // sortCategories
+    $sortCategories = $tree->createElement('sortCategories', 'false');
+    $quiz->appendChild($sortCategories);
+
+    // showCategory
+    $showCategory = $tree->createElement('showCategory', 'false');
+    $quiz->appendChild($showCategory);
+
+    // quizModus
+    $quizModus = $tree->createElement('quizModus', '0');
+    $quizModus->setAttribute('questionsPerPage', '10');
+    $quiz->appendChild($quizModus);
+
+    // startOnlyRegisteredUser
+    $startOnlyRegisteredUser = $tree->createElement('startOnlyRegisteredUser', 'false');
+    $quiz->appendChild($startOnlyRegisteredUser);
+
+    // forms
+    $forms = $tree->createElement('forms');
+    $forms->setAttribute('activated', 'false');
+    $forms->setAttribute('position', '0');
+    $quiz->appendChild($forms);
+
+    // questions
+    $questions = $tree->createElement('questions');
+
+    foreach ($questionsData as $questionDataKey => $questionData) {
+      $questionNumber = $questionDataKey + 1;
+      $question = $tree->createElement('question');
+      $question->setAttribute('answerType', 'single');
+
       // title
       $title = $tree->createElement('title');
-      $title->setAttribute('titleHidden', 'false');
-      $title->appendChild($tree->createCDATASection($this->getFilename($filePath)));
-      $quiz->appendChild($title);
+      $title->appendChild($tree->createCDATASection("Pergunta: {$questionNumber}"));
+      $question->appendChild($title);
 
-      // text
-      $text = $tree->createElement('text');
-      $text->appendChild($tree->createCDATASection(''));
-      $quiz->appendChild($text);
+      // points
+      $points = $tree->createElement('points', '1');
+      $question->appendChild($points);
 
-      // resultText
-      $resultText = $tree->createElement('resultText');
-      $resultText->setAttribute('gradeEnabled', 'false');
-      $resultText->appendChild($tree->createCDATASection(''));
-      $quiz->appendChild($resultText);
+      // questionText
+      $questionText = $tree->createElement('questionText');
+      $questionText->appendChild($tree->createCDATASection($questionData->questiontext));
+      $question->appendChild($questionText);
 
-      // btnRestartQuizHidden
-      $btnRestartQuizHidden = $tree->createElement('btnRestartQuizHidden', 'true');
-      $quiz->appendChild($btnRestartQuizHidden);
+      // correctMsg
+      $correctMsg = $tree->createElement('correctMsg');
+      $correctMsg->appendChild($tree->createCDATASection(''));
+      $question->appendChild($correctMsg);
 
-      // btnViewQuestionHidden
-      $btnViewQuestionHidden = $tree->createElement('btnViewQuestionHidden', 'true');
-      $quiz->appendChild($btnViewQuestionHidden);
+      // incorrectMsg
+      $incorrectMsg = $tree->createElement('incorrectMsg');
+      $incorrectMsg->appendChild($tree->createCDATASection(''));
+      $question->appendChild($incorrectMsg);
 
-      // questionRandom
-      $questionRandom = $tree->createElement('questionRandom', 'false');
-      $quiz->appendChild($questionRandom);
+      // tipMsg
+      $tipMsg = $tree->createElement('tipMsg');
+      $tipMsg->setAttribute('enabled', 'false');
+      $tipMsg->appendChild($tree->createCDATASection(''));
+      $question->appendChild($tipMsg);
 
-      // answerRandom
-      $answerRandom = $tree->createElement('answerRandom', 'true');
-      $quiz->appendChild($answerRandom);
+      // category
+      $category = $tree->createElement('category');
+      $question->appendChild($category);
 
-      // timeLimit
-      $timeLimit = $tree->createElement('timeLimit', '600');
-      $quiz->appendChild($timeLimit);
+      // correctSameText
+      $correctSameText = $tree->createElement('correctSameText', 'false');
+      $question->appendChild($correctSameText);
 
-      // showPoints
-      $showPoints = $tree->createElement('showPoints', 'false');
-      $quiz->appendChild($showPoints);
+      // showPointsInBox
+      $showPointsInBox = $tree->createElement('showPointsInBox', 'false');
+      $question->appendChild($showPointsInBox);
 
-      // statistic
-      $statistic = $tree->createElement('statistic');
-      $statistic->setAttribute('activated', 'true');
-      $statistic->setAttribute('ipLock', '0');
-      $quiz->appendChild($statistic);
+      // answerPointsActivated
+      $answerPointsActivated = $tree->createElement('answerPointsActivated', 'false');
+      $question->appendChild($answerPointsActivated);
 
-      // quizRunOnce
-      $quizRunOnce = $tree->createElement('quizRunOnce', 'true');
-      $quizRunOnce->setAttribute('type', '2');
-      $quizRunOnce->setAttribute('cookie', 'false');
-      $quizRunOnce->setAttribute('time', '0');
-      $quiz->appendChild($quizRunOnce);
+      // answerPointsDiffModusActivated
+      $answerPointsDiffModusActivated = $tree->createElement('answerPointsDiffModusActivated', 'false');
+      $question->appendChild($answerPointsDiffModusActivated);
 
-      // numberedAnswer
-      $numberedAnswer = $tree->createElement('numberedAnswer', 'false');
-      $quiz->appendChild($numberedAnswer);
+      // disableCorrect
+      $disableCorrect = $tree->createElement('disableCorrect', 'false');
+      $question->appendChild($disableCorrect);
 
-      // hideAnswerMessageBox
-      $hideAnswerMessageBox = $tree->createElement('hideAnswerMessageBox', 'true');
-      $quiz->appendChild($hideAnswerMessageBox);
+      // answers
+      $answers = $tree->createElement('answers');
 
-      // disabledAnswerMark
-      $disabledAnswerMark = $tree->createElement('disabledAnswerMark', 'true');
-      $quiz->appendChild($disabledAnswerMark);
+      foreach ($questionData->answer as $anwserDataKey => $answerData) {
+        // answer
+        $answer = $tree->createElement('answer');
+        $answer->setAttribute('points', '0');
+        $answer->setAttribute('correct', ($questionData->fraction[$anwserDataKey] > 0) ? 'true' : 'false');
 
-      // showMaxQuestion
-      $showMaxQuestion = $tree->createElement('showMaxQuestion', 'false');
-      $showMaxQuestion->setAttribute('showMaxQuestionValue', '1');
-      $showMaxQuestion->setAttribute('showMaxQuestionPercent', 'false');
-      $quiz->appendChild($showMaxQuestion);
+        // answerText
+        $answerText = $tree->createElement('answerText');
+        $answerText->setAttribute('html', 'false');
+        $answerText->appendChild($tree->createCDATASection($answerData['text']));
+        $answer->appendChild($answerText);
 
-      // toplist
-      $toplist = $tree->createElement('toplist');
+        // stortText
+        $stortText = $tree->createElement('stortText');
+        $stortText->setAttribute('html', 'false');
+        $stortText->appendChild($tree->createCDATASection(''));
+        $answer->appendChild($stortText);
 
-      //// toplistDataAddPermissions
-      $toplistDataAddPermissions = $tree->createElement('toplistDataAddPermissions', '1');
-      $toplist->appendChild($toplistDataAddPermissions);
-
-      //// toplistDataSort
-      $toplistDataSort = $tree->createElement('toplistDataSort', '1');
-      $toplist->appendChild($toplistDataSort);
-
-      //// toplistDataAddMultiple
-      $toplistDataAddMultiple = $tree->createElement('toplistDataAddMultiple', 'false');
-      $toplist->appendChild($toplistDataAddMultiple);
-
-      //// toplistDataAddBlock
-      $toplistDataAddBlock = $tree->createElement('toplistDataAddBlock', '1');
-      $toplist->appendChild($toplistDataAddBlock);
-
-      //// toplistDataShowLimit
-      $toplistDataShowLimit = $tree->createElement('toplistDataShowLimit', '1');
-      $toplist->appendChild($toplistDataShowLimit);
-
-      //// toplistDataShowIn
-      $toplistDataShowIn = $tree->createElement('toplistDataShowIn', '1');
-      $toplist->appendChild($toplistDataShowIn);
-
-      //// toplistDataCaptcha
-      $toplistDataCaptcha = $tree->createElement('toplistDataCaptcha', 'false');
-      $toplist->appendChild($toplistDataCaptcha);
-
-      //// toplistDataAddAutomatic
-      $toplistDataAddAutomatic = $tree->createElement('toplistDataAddAutomatic', 'true');
-      $toplist->appendChild($toplistDataAddAutomatic);
-
-      $quiz->appendChild($toplist);
-
-      // showAverageResult
-      $showAverageResult = $tree->createElement('showAverageResult', 'true');
-      $quiz->appendChild($showAverageResult);
-
-      // prerequisite
-      $prerequisite = $tree->createElement('prerequisite', 'false');
-      $quiz->appendChild($prerequisite);
-
-      // showReviewQuestion
-      $showReviewQuestion = $tree->createElement('showReviewQuestion', 'false');
-      $quiz->appendChild($showReviewQuestion);
-
-      // quizSummaryHide
-      $quizSummaryHide = $tree->createElement('quizSummaryHide', 'false');
-      $quiz->appendChild($quizSummaryHide);
-
-      // skipQuestionDisabled
-      $skipQuestionDisabled = $tree->createElement('skipQuestionDisabled', 'true');
-      $quiz->appendChild($skipQuestionDisabled);
-
-      // emailNotification
-      $emailNotification = $tree->createElement('emailNotification', '0');
-      $quiz->appendChild($emailNotification);
-
-      // userEmailNotification
-      $userEmailNotification = $tree->createElement('userEmailNotification', 'false');
-      $quiz->appendChild($userEmailNotification);
-
-      // showCategoryScore
-      $showCategoryScore = $tree->createElement('showCategoryScore', 'false');
-      $quiz->appendChild($showCategoryScore);
-
-      // hideResultCorrectQuestion
-      $hideResultCorrectQuestion = $tree->createElement('hideResultCorrectQuestion', 'true');
-      $quiz->appendChild($hideResultCorrectQuestion);
-
-      // hideResultQuizTime
-      $hideResultQuizTime = $tree->createElement('hideResultQuizTime', 'false');
-      $quiz->appendChild($hideResultQuizTime);
-
-      // hideResultPoints
-      $hideResultPoints = $tree->createElement('hideResultPoints', 'true');
-      $quiz->appendChild($hideResultPoints);
-
-      // autostart
-      $autostart = $tree->createElement('autostart', 'true');
-      $quiz->appendChild($autostart);
-
-      // forcingQuestionSolve
-      $forcingQuestionSolve = $tree->createElement('forcingQuestionSolve', 'true');
-      $quiz->appendChild($forcingQuestionSolve);
-
-      // hideQuestionPositionOverview
-      $hideQuestionPositionOverview = $tree->createElement('hideQuestionPositionOverview', 'true');
-      $quiz->appendChild($hideQuestionPositionOverview);
-
-      // hideQuestionNumbering
-      $hideQuestionNumbering = $tree->createElement('hideQuestionNumbering', 'true');
-      $quiz->appendChild($hideQuestionNumbering);
-
-      // sortCategories
-      $sortCategories = $tree->createElement('sortCategories', 'false');
-      $quiz->appendChild($sortCategories);
-
-      // showCategory
-      $showCategory = $tree->createElement('showCategory', 'false');
-      $quiz->appendChild($showCategory);
-
-      // quizModus
-      $quizModus = $tree->createElement('quizModus', '0');
-      $quizModus->setAttribute('questionsPerPage', '10');
-      $quiz->appendChild($quizModus);
-
-      // startOnlyRegisteredUser
-      $startOnlyRegisteredUser = $tree->createElement('startOnlyRegisteredUser', 'false');
-      $quiz->appendChild($startOnlyRegisteredUser);
-
-      // forms
-      $forms = $tree->createElement('forms');
-      $forms->setAttribute('activated', 'false');
-      $forms->setAttribute('position', '0');
-      $quiz->appendChild($forms);
-
-      // questions
-      $questions = $tree->createElement('questions');
-
-      foreach ($questionsData as $questionData) {
-        $question = $tree->createElement('question');
-
-        // TODO: Finish him...
-
-        $questions->appendChild($question);
+        $answers->appendChild($answer);
       }
 
-      $quiz->appendChild($questions);
+      $question->appendChild($answers);
 
-      $quiz = $data->appendChild($quiz);
+      $questions->appendChild($question);
+    }
 
-    // TODO: Debug
-    // echo $tree->saveXML();
+    $quiz->appendChild($questions);
+    $data->appendChild($quiz);
 
     return $tree->saveXML();
   }
